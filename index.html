@@ -42,10 +42,70 @@
     .form input,.form textarea{width:100%;padding:1rem;margin:.5rem 0;border:1px solid #ddd;border-radius:8px;font-family:inherit;}
     .form textarea{resize:vertical;min-height:120px;}
     .form button{width:100%;margin-top:1rem;}
+    
+    /* NEW: Why Choose Section */
+    .why-choose {
+      background: #f9f9f9;
+      padding: 4rem 0;
+    }
+    .why-choose .highlight {
+      font-weight: 700;
+      color: var(--green);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .feature-item:hover {
+      transform: translateX(8px);
+    }
+    .feature-item i {
+      color: var(--green);
+      font-size: 1.3rem;
+      width: 24px;
+    }
+
+    /* NEW: Contact Info Card */
+    .contact-info {
+      background: white;
+      padding: 2rem;
+      border-radius: 1.2rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+      max-width: 600px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+    .contact-info p {
+      margin: 0.8rem 0;
+      font-size: 1.1rem;
+    }
+    .contact-info a {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
     @media(max-width:768px){
       .hero h1{font-size:2.6rem;}
       nav{display:none;}
       section{padding:4rem 0;}
+      .feature-item { padding: 1rem; }
     }
   </style>
 </head>
@@ -98,37 +158,50 @@
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" style="background:#f9f9f9;">
+  <!-- WHY CHOOSE (FIXED & EYE-CATCHING) -->
+  <section id="about" class="why-choose">
     <div class="container">
       <h1>Why Choose TidyUpCo?</h1>
-      <p>Locally owned in Newmarket. Fully insured. 100% satisfaction guarantee.</p>
-      <ul style="max-width:600px;margin:2rem auto;text-align:left;color:var(--gray);font-size:1.1rem;">
-        <li>Serving Newmarket, Aurora, Bradford & York Region</li>
-        <li>Same-day availability (limited)</li>
-        <li>Flexible weekly, bi-weekly, or monthly plans</li>
-      </ul>
+      <p class="highlight">Locally owned in Newmarket • Fully insured • 100% satisfaction guarantee</p>
+
+      <div class="features">
+        <div class="feature-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Serving Newmarket, Aurora, Bradford & York Region</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-bolt"></i>
+          <span>Same-day availability (limited)</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-calendar-check"></i>
+          <span>Flexible weekly, bi-weekly, or monthly plans</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- CONTACT (CLEAN & CENTERED) -->
   <section id="contact">
     <div class="container">
       <h1>Get in Touch</h1>
-      <p>Call, email, or fill out the form. We reply within 1 hour.</p>
+      <p style="text-align:center;max-width:700px;margin:0 auto 1.5rem;color:var(--gray);">
+        Call, email, or fill out the form. We reply within 1 hour.
+      </p>
 
-      <div style="background:white;padding:2rem;border-radius:1rem;box-shadow:0 6px 18px rgba(0,0,0,.06);max-width:600px;margin:2rem auto;text-align:center;">
-        <p><strong>Phone:</strong> <a href="tel:6477934973" style="color:var(--blue);">647-793-4973</a></p>
-        <p><strong>Email:</strong> <a href="mailto:tidyupproco@gmail.com" style="color:var(--blue);">tidyupproco@gmail.com</a></p>
+      <!-- Contact Info Card -->
+      <div class="contact-info">
+        <p><strong>Phone:</strong> <a href="tel:6477934973">647-793-4973</a></p>
+        <p><strong>Email:</strong> <a href="mailto:tidyupproco@gmail.com">tidyupproco@gmail.com</a></p>
         <p><strong>Address:</strong> 17480 Yonge St, Newmarket, ON L3Y 8A8</p>
         <p style="margin-top:1rem;">
-          <a href="https://www.instagram.com/tidy.upcorp/" target="_blank" style="color:var(--blue);">
+          <a href="https://www.instagram.com/tidy.upcorp/" target="_blank">
             <i class="fab fa-instagram"></i> Follow us on Instagram
           </a>
         </p>
       </div>
 
-      <!-- MAILTO FORM – NO BACKEND NEEDED -->
+      <!-- MAILTO FORM -->
       <form class="form" onsubmit="return submitMailto(this);">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
@@ -136,7 +209,9 @@
         <textarea name="message" placeholder="Tell us about your home (size, frequency, special requests)" required></textarea>
         <button type="submit" class="btn">Send Message</button>
       </form>
-      <p style="font-size:.9rem;color:var(--gray);text-align:center;">Your email client will open with a pre-filled message.</p>
+      <p style="font-size:.9rem;color:var(--gray);text-align:center;">
+        Your email client will open with a pre-filled message.
+      </p>
     </div>
   </section>
 
@@ -170,7 +245,6 @@
       const mailtoLink = `mailto:tidyupproco@gmail.com?subject=${subject}&body=${body}`;
       window.location.href = mailtoLink;
 
-      // Optional: show confirmation
       setTimeout(() => alert('Your email client is opening. Please send the message!'), 500);
       return false;
     }
