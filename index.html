@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- GOOGLE TAG (gtag.js) – ADDED FOR YOU -->
-  <!-- Google tag (gtag.js) -->
+  <!-- GOOGLE TAG (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF23YNPC2"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -11,12 +10,15 @@
     gtag('config', 'G-XCF23YNPC2');
   </script>
 
+  <!-- VERCEL SPEED INSIGHTS – STATIC SITE VERSION -->
+  <script type="module">
+    import { injectSpeedInsights } from 'https://esm.sh/@vercel/speed-insights@1';
+    injectSpeedInsights();
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
-  <!-- GOOGLE SITE VERIFICATION (Already Added) -->
   <meta name="google-site-verification" content="google163aef8060e69478.html" />
-
   <title>TidyUpCo – Eco-Friendly Cleaning in Newmarket</title>
   <meta name="description" content="Premium eco-friendly cleaning for busy families in Newmarket, ON. Call 647-793-4973 or email tidyupproco@gmail.com"/>
 
@@ -57,69 +59,21 @@
     .form textarea{resize:vertical;min-height:120px;}
     .form button{width:100%;margin-top:1rem;}
     
-    /* Why Choose Section */
-    .why-choose {
-      background: #f9f9f9;
-      padding: 4rem 0;
-    }
-    .why-choose .highlight {
-      font-weight: 700;
-      color: var(--green);
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    .features {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
-    .feature-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background: white;
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
-    }
-    .feature-item:hover {
-      transform: translateX(8px);
-    }
-    .feature-item i {
-      color: var(--green);
-      font-size: 1.3rem;
-      width: 24px;
-    }
-
-    /* Contact Info Card */
-    .contact-info {
-      background: white;
-      padding: 2rem;
-      border-radius: 1.2rem;
-      box-shadow: 0 6px 18px rgba(0,0,0,.08);
-      max-width: 600px;
-      margin: 2rem auto;
-      text-align: center;
-    }
-    .contact-info p {
-      margin: 0.8rem 0;
-      font-size: 1.1rem;
-    }
-    .contact-info a {
-      color: var(--blue);
-      font-weight: 600;
-    }
+    .why-choose {background:#f9f9f9;padding:4rem 0;}
+    .why-choose .highlight {font-weight:700;color:var(--green);font-size:1.1rem;margin-bottom:1.5rem;text-align:center;}
+    .features {display:flex;flex-direction:column;gap:1rem;max-width:600px;margin:0 auto;padding:1.5rem;}
+    .feature-item {display:flex;align-items:center;gap:1rem;background:white;padding:1rem 1.5rem;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:transform .3s;}
+    .feature-item:hover {transform:translateX(8px);}
+    .feature-item i {color:var(--green);font-size:1.3rem;width:24px;}
+    .contact-info {background:white;padding:2rem;border-radius:1.2rem;box-shadow:0 6px 18px rgba(0,0,0,.08);max-width:600px;margin:2rem auto;text-align:center;}
+    .contact-info p {margin:.8rem 0;font-size:1.1rem;}
+    .contact-info a {color:var(--blue);font-weight:600;}
 
     @media(max-width:768px){
       .hero h1{font-size:2.6rem;}
       nav{display:none;}
       section{padding:4rem 0;}
-      .feature-item { padding: 1rem; }
+      .feature-item {padding:1rem;}
     }
   </style>
 </head>
@@ -177,7 +131,6 @@
     <div class="container">
       <h1>Why Choose TidyUpCo?</h1>
       <p class="highlight">Locally owned in Newmarket • Fully insured • 100% satisfaction guarantee</p>
-
       <div class="features">
         <div class="feature-item">
           <i class="fas fa-map-marker-alt"></i>
@@ -202,8 +155,6 @@
       <p style="text-align:center;max-width:700px;margin:0 auto 1.5rem;color:var(--gray);">
         Call, email, or fill out the form. We reply within 1 hour.
       </p>
-
-      <!-- Contact Info Card -->
       <div class="contact-info">
         <p><strong>Phone:</strong> <a href="tel:6477934973">647-793-4973</a></p>
         <p><strong>Email:</strong> <a href="mailto:tidyupproco@gmail.com">tidyupproco@gmail.com</a></p>
@@ -214,8 +165,6 @@
           </a>
         </p>
       </div>
-
-      <!-- MAILTO FORM -->
       <form class="form" onsubmit="return submitMailto(this);">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
@@ -252,13 +201,9 @@
       const email = encodeURIComponent(form.email.value.trim());
       const phone = encodeURIComponent(form.phone.value.trim());
       const message = encodeURIComponent(form.message.value.trim());
-
       const subject = `Cleaning Quote Request from ${name}`;
       const body = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0A%0AMessage:%0A${message}`;
-
-      const mailtoLink = `mailto:tidyupproco@gmail.com?subject=${subject}&body=${body}`;
-      window.location.href = mailtoLink;
-
+      window.location.href = `mailto:tidyupproco@gmail.com?subject=${subject}&body=${body}`;
       setTimeout(() => alert('Your email client is opening. Please send the message!'), 500);
       return false;
     }
